@@ -15,23 +15,25 @@ memory uut(
   .dout(dout)
 );
 
-initial begin
-  clk = 0;
-  forever #5 clk = ~clk;
-end
 
 initial begin
   $dumpfile("memory_test.vcd");
   $dumpvars(0, memory_tb);
 
   $monitor("time=%0t, we=%b, addr=%h, din=%h, dout=%h", $time, we, addr, din, dout);
-  we = 0; addr = 0; din = 0;
 
-  #10 we = 1; addr = 8'h01; din = 32'hdeadbeef;
-  #10 we = 1; addr = 8'h02; din = 32'hcafebabe;
-  #10 we = 0; addr = 8'h01; // 最初のデータを読み出す
-  #10 addr = 8'h02;        // 次のデータを読み出す
-  #10 $finish;             // シミュレーション終了
+  we <= 0;
+  addr <= 0;
+  din <= 0;
+
+
+  #10 we <= 1; addr <= 8'h01; din <= 32'hdeadbeef;
+  #10 we <= 1; addr <= 8'h02; din <= 32'hcafebabe;
+  #10 we <= 0; addr <= 8'h01; // 最初のデータを読み出す
+  #10 addr <= 8'h02;        // 次のデータを読み出す
+   $finish;             // シミュレーション終了
 end
+
+always #10 clk <= ~clk;
 
 endmodule
