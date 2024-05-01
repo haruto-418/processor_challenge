@@ -6,6 +6,7 @@ module decoder_ver2(
   output reg[4:0] rd,
   output reg[6:0] opcode,
 
+  // 算術演算命令
   output reg LUI,
   output reg AUIPC,
   output reg ADDI,
