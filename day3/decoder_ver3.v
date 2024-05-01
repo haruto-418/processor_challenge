@@ -66,9 +66,9 @@ module decoder_ver3(
       end
       7'b0100011: begin
         case(funct3)
-          3'b000: imm = {20'b0, iword[31:25], iword[11:7]};  // SB (STORE BYTE)
-          3'b001: imm = {20'b0, iword[31:25], iword[11:7]};  // SH (STORE HALFWORD)
-          3'b010: imm = {20'b0, iword[31:25], iword[11:7]};  // SW (STORE WORD)
+          3'b000: // SB (STORE BYTE)
+          3'b001: // SH (STORE HALFWORD)
+          3'b010: // SW (STORE WORD)
         endcase
       end
     endcase
