@@ -39,6 +39,28 @@ module decoder(
           end
         endcase
       end
+      7'b0110011: begin
+        case(funct3)
+        3'b000:begin
+          case(funct7)
+            7'b0000000: //ADD (ADDITION)
+            7'b0100000: // SUB (SUBTRACT)
+          endcase
+        end
+        3'b001: // SLL (SHIFT LEFT LOGICAL)
+        3'b010: // SLT (SET LESS THAN)
+        3'b011: // LSTU (SET LESS THAN UNSIGNED)
+        3'b100: // XOR (EXCLUSIVE OR)
+        3'b101: begin
+          case(funct7)
+            7'b0000000: // SRL (SHIFT RIGHT LOGICAL)
+            7'b0100000: // SRA (SHIFT RIGHT ARITHMETIC)
+          endcase
+        end
+        3'b110: // OR (OR)
+        3'b111: // AND (AND)
+        endcase
+      end
 
       // 制御命令
       7'b1101111: // JAL (JUMP AND LINK)
