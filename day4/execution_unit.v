@@ -10,24 +10,24 @@ module execution_unit(
   case(func_code)
     5'b00000: // LUI
     5'b00001: // AUIPC
-    5'b000010: // ADDI
-    5'b000011: // SLTI
-    5'b000100: // SLTUI
-    5'b000101: // XORI
-    5'b000110: // ORI
-    5'b000111: // ANDI
-    5'b001000: // SLLI
-    5'b001001: // SRLI
-    5'b001010: // SRAI
-    5'b001011: // ADD
-    5'b001100: // SUB
-    5'b001101: // SLL
-    5'b001110: // SLT
-    5'b001111: // SLTU
-    5'b010000: // XOR
-    5'b010001: // SRL
-    5'b010010: // SRA
-    5'b010011: // OR
-    5'b010100: // AND
+    5'b00010: // ADDI
+    5'b00011: // SLTI
+    5'b00100: // SLTUI
+    5'b00101: // XORI
+    5'b00110: // ORI
+    5'b00111: // ANDI
+    5'b01000: // SLLI
+    5'b01001: // SRLI
+    5'b01010: // SRAI
+    5'b01011: // ADD
+    5'b01100: // SUB
+    5'b01101: // SLL
+    5'b01110: // SLT
+    5'b01111: // SLTU
+    5'b10000: // XOR
+    5'b10001: // SRL
+    5'b10010: // SRA
+    5'b10011: // OR
+    5'b10100: // AND
   endcase
 endmodule

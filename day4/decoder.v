@@ -9,7 +9,8 @@ module decoder(
   output reg [6:0] opcode,
   output reg [2:0] funct3,
   output reg [6:0] funct7,
-  output reg [31:0] imm
+  output reg [31:0] imm,
+  output reg [4:0] func_code // execution_unit参照
 );
 
   always @(iword) begin
