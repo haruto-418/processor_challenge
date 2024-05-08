@@ -39,4 +39,12 @@ module operand_switcher(
     end
     7'b0110011: oprr_type = 3'b000; // ここはR-type（全てのオペランドがレジスタから取得される）
   endcase
+
+  case(oprr_type)
+    3'b000: oprr = regdata2;
+    3'b001: oprr = {{20{iword[31]}}, iword[31:20]};
+    3'b010: oprr = {iword[31:12], {12{1'b0}}};
+    3'b011: oprr = {{20{iword[31]}}, iword[31:25], iword[11:7]};
+    3'b100: oprr = {{27{1'b0}}, iword[24:20]};
+  endcase
 endmodule
