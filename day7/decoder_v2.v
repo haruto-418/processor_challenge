@@ -32,31 +32,31 @@ module decoder(
   always @(ir) begin
     case(opcode)
       7'b0110111:
-        alucode <= 6'b00000; // LUI
+        alucode <= ALU_LUI; // LUI
       7'b0010111:
         alucode <= 6'b00001; // AUIPC
       7'b0010011: begin
         case(ir[14:12])
           3'b000:
-            alucode <= 6'b000010; // ADDI
+            alucode <= ALU_ADD; // ADDI
           3'b010:
-            alucode <= 6'b000011; // SLTI
+            alucode <= ALU_SLT; // SLTI
           3'b011:
-            alucode <= 6'b000100; // SLTIU
+            alucode <= ALU_SLTU; // SLTIU
           3'b100:
-            alucode <= 6'b000101; // XORI
+            alucode <= ALU_XOR; // XORI
           3'b110:
-            alucode <= 6'b000110; // ORI
+            alucode <= ALU_OR; // ORI
           3'b111:
-            alucode <= 6'b000111; // ANDI
+            alucode <= ALU_AND; // ANDI
           3'b001: 
-            alucode <= 6'b001000; // SLLI
+            alucode <= ALU_SLL; // SLLI
           3'b101: begin
             case(ir[31:25])
               7'b0000000: 
-                alucode <= 6'b001001; // SRLI
+                alucode <= ALU_SRL; // SRLI
               7'b0100000: 
-                alucode <= 6'b001010; // SRAI
+                alucode <= ALU_SRA; // SRAI
             endcase
           end
         endcase
@@ -67,78 +67,78 @@ module decoder(
           3'b000:begin
             case(ir[31:25])
               7'b0000000: 
-                alucode <= 6'b001011; // ADD
+                alucode <= ALU_ADD; // ADD
               7'b0100000: 
-                alucode <= 6'b001100; // SUB
+                alucode <= ALU_SUB; // SUB
             endcase
           end
         3'b001: 
-          alucode <= 6'b001101; // SLL
+          alucode <= ALU_SLL; // SLL
         3'b010: 
-          alucode <= 6'b001110; // SLT
+          alucode <= ALU_SLT; // SLT
         3'b011: 
-          alucode <= 6'b001111; // SLTU
+          alucode <= ALU_SLTU; // SLTU
         3'b100: 
-          alucode <= 6'b010000; // XOR
+          alucode <= ALU_XOR; // XOR
         3'b101: begin
           case(ir[31:25])
             7'b0000000: 
-              alucode <= 6'b010001; // SRL
+              alucode <= ALU_SRL; // SRL
             7'b0100000: 
-              alucode <= 6'b010010; // SRA
+              alucode <= ALU_SRA; // SRA
           endcase
         end
         3'b110: 
-          alucode <= 6'b010011; // OR
+          alucode <= ALU_OR; // OR
         3'b111: 
-          alucode <= 6'b010100; // AND
+          alucode <= ALU_AND; // AND
         endcase
       end
 
       7'b1101111:
-        alucode <= 6'b010101; // JAL
+        alucode <= ALU_JAL; // JAL
       7'b1100111: 
-        alucode <= 6'b010110; // JALR
+        alucode <= ALU_JALR; // JALR
       7'b1100011: begin
         case(ir[14:12])
           3'b000: 
-            alucode <= 6'b010111; // BEQ
+            alucode <= ALU_BEQ; // BEQ
           3'b001: 
-            alucode <= 6'b011000; // BNE
+            alucode <= ALU_BNE; // BNE
           3'b100: 
-            alucode <= 6'b011001; // BLT
+            alucode <= ALU_BLT; // BLT
           3'b101: 
-            alucode <= 6'b011010; // BGE
+            alucode <= ALU_BGE; // BGE
           3'b110: 
-            alucode <= 6'b011011; // BLTU
+            alucode <= ALU_BLTU; // BLTU
           3'b111: 
-            alucode <= 6'b011100; // BGEU
+            alucode <= ALU_BGEU; // BGEU
         endcase
       end
 
       7'b0000011: begin
         case(ir[14:12])
           3'b000: 
-            alucode <= 6'b011101; // LB
+            alucode <= ALU_LB; // LB
           3'b001: 
-            alucode <= 6'b011110; // LH
+            alucode <= ALU_LH; // LH
           3'b010: 
-            alucode <= 6'b011111; // LW
+            alucode <= ALU_LW; // LW
           3'b100: 
-            alucode <= 6'b100000; // LBU
+            alucode <= ALU_LBU; // LBU
           3'b101: 
-            alucode <= 6'b100001; // LHU
+            alucode <= ALU_LHU; // LHU
         endcase
       end
 
       7'b0100011: begin
         case(ir[14:12])
           3'b000: 
-            alucode <= 6'b100010; // SB
+            alucode <= ALU_SB; // SB
           3'b001: 
-            alucode <= 6'b100011; // SH
+            alucode <= ALU_SH; // SH
           3'b010: 
-            alucode <= 6'b100100; // SW
+            alucode <= ALU_SW; // SW
         endcase
       end
     endcase
