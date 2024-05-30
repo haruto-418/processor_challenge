@@ -6,6 +6,8 @@ module decoder(
   output wire[0:0] ld_en, 
   output wire[0:0] st_en 
 );
+  
+
   always @(iword) begin
     case(iword[6:0])
       7'b0110111: 
