@@ -39,24 +39,33 @@ module decoder(
         case(ir[14:12])
           3'b000:
             alucode <= ALU_ADD; // ADDI
+            aluop1_type <= OP_TYPE_IMM
           3'b010:
             alucode <= ALU_SLT; // SLTI
+            aluop1_type <= OP_TYPE_IMM
           3'b011:
             alucode <= ALU_SLTU; // SLTIU
+            aluop1_type <= OP_TYPE_IMM
           3'b100:
             alucode <= ALU_XOR; // XORI
+            aluop1_type <= OP_TYPE_IMM
           3'b110:
             alucode <= ALU_OR; // ORI
+            aluop1_type <= OP_TYPE_IMM
           3'b111:
             alucode <= ALU_AND; // ANDI
+            aluop1_type <= OP_TYPE_IMM
           3'b001: 
             alucode <= ALU_SLL; // SLLI
+            aluop1_type <= OP_TYPE_IMM
           3'b101: begin
             case(ir[31:25])
               7'b0000000: 
                 alucode <= ALU_SRL; // SRLI
+                aluop1_type <= OP_TYPE_IMM
               7'b0100000: 
                 alucode <= ALU_SRA; // SRAI
+                aluop1_type <= OP_TYPE_IMM
             endcase
           end
         endcase
